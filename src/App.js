@@ -18,19 +18,22 @@ function App() {
         velocidade: resultado.data.wind.speed,
         humidade: resultado.data.main.humidity,
         icon:`https://openweathermap.org/img/wn/${resultado.data.weather[0].icon}@2x.png`,
-        img: `https://countryflagsapi.com/png/${resultado.data.sys.country}`
+        feelslike: resultado.data.main.feels_like,
+        sol: resultado.data.sys.sunrise,
+        pordosol: resultado.data.sys.sunset
       }
       console.log(resultado)
       setCidade(cidade)
     }catch(erro){
       console.log(erro)
     }
+
   }
 
   return (
     <div className="App flex justify-center my-20"> 
-      <div className="bg-gray-100 w-[22rem] rounded-2xl shadow-lg p-8">
-            <div className="flex">
+      <div className="bg-gray-100/30 w-[25rem] rounded-2xl shadow-lg p-3">
+            <div className="flex justify-center">
                 <input 
                     type="text" 
                     placeholder="digite o nome da cidade" 
@@ -47,7 +50,7 @@ function App() {
           cidade={cidade}
         /> 
       )}
-    </div>
+     </div>
     </div>
   );
 }
